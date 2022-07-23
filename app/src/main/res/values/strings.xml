@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Invoice Maker</string>
+    <string-array name="pizza_menu">
+        <item>Select</item>
+        <item>Margarita</item>
+        <item>Naga pizza</item>
+        <item>Pappy Pannier</item>
+        <item>Mexican Green Wave</item>
+        <item>Veg Extravagance</item>
+    </string-array>
+</resources>
