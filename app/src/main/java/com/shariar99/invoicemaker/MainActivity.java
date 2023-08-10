@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -189,29 +190,24 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
                     mypdfDoc.finishPage(myPage1);
 
+// Generate a unique filename based on current date and time
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault());
+                    String currentDateAndTime = sdf.format(new Date());
+                    String filename = "Invoice_" + currentDateAndTime + ".pdf";
 
-                    File file = new File(Environment.getExternalStorageDirectory(), "/FirstPDF.pdf");
+                    File file = new File(Environment.getExternalStorageDirectory(), filename);
+
                     try {
                         mypdfDoc.writeTo(new FileOutputStream(file));
+                        Toast.makeText(MainActivity.this, "PDF saved as: " + filename, Toast.LENGTH_SHORT).show();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                     mypdfDoc.close();
                 }
-
-
-
-
-                }
-
-            });
-        }
+            }
+        });
+    }
 }
